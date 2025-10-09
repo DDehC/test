@@ -1,0 +1,89 @@
+/* Full-bleed across any viewport width without horizontal scroll */
+.carousel-container {
+  position: relative;
+
+  /* full-bleed trick */
+  width: 100vw;
+  max-width: 100vw;
+  margin-inline: calc(50% - 50vw);
+
+  /* height / aspect */
+  height: clamp(320px, 52vh, 720px);
+
+  overflow: hidden;
+}
+
+/* Prefer small-viewport units on mobile to avoid URL-bar jumps */
+@supports (width: 100svw) {
+  .carousel-container {
+    width: 100svw;
+    max-width: 100svw;
+    margin-inline: calc(50% - 50svw);
+    height: clamp(320px, 52svh, 720px);
+  }
+}
+
+/* slides wrapper */
+.carousel-slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* each slide covers the container */
+.carousel-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.carousel-image.active { opacity: 1; }
+
+/* nav buttons */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.6rem 0.9rem;
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+  line-height: 1;
+}
+.carousel-button.prev { left: 16px; }
+.carousel-button.next { right: 16px; }
+
+/* indicators */
+.carousel-indicators {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(200,200,200,.85);
+  cursor: pointer;
+  transition: background .2s ease;
+}
+.indicator.active { background: #fff; }
+
+/* safety: media never causes overflow */
+.carousel-container img,
+.carousel-container video {
+  max-width: 100%;
+  height: 100%;
+  display: block;
+}

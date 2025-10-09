@@ -1,0 +1,26 @@
+.pr-filepicker-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pr-filepicker {
+  display: none;
+}
+
+.pr-fileadd {
+  padding: 8px 12px;
+  background: #f5f5f5;
+  color: #111;
+  border: 1px solid rgba(0,0,0,.18);
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.pr-files-summary {
+  color: #555;
+}
