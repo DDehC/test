@@ -1,0 +1,15 @@
+/* shared navbar styling */
+.navbar {
+  background: #FDC700;          /* requested color */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.navbar .nav-right .nav-link,
+.navbar .brand,
+.navbar .brand:visited {
+  color: #000;
+}
+
+.navbar .nav-right .nav-link:hover {
+  text-decoration: underline;
+}
