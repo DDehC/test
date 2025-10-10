@@ -1,0 +1,211 @@
+.newsboard {
+  display: grid;
+  grid-template-columns: 18.75rem 1fr 17.5rem;
+  gap: 24px;
+  width: 100%;
+  padding: clamp(1.5rem, 2vw, 2.5rem);
+  border-radius: 20px;
+  background: #fff; 
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.1);
+}
+
+.newsboard-sidebar,
+.newsboard-main {
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+}
+
+.newsboard-sidebar {
+  padding: 1.5rem;
+  background: linear-gradient(180deg, #facc15 0%, #facc15 50%);
+  color: #0f172a;
+}
+
+.newsboard-main {
+  min-width: 0;
+  padding: 1.5rem;
+}
+
+.newsboard-right {
+  min-width: 0;
+}
+
+.newsboard-right-inner {
+  position: sticky;
+  top: 1.25rem;
+  font-size: 0.95rem;
+  transform: translateZ(0); 
+}
+
+.newsboard-header {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.newsboard-title {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.newsboard-sidebar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.newsboard-sidebar-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem 0.75rem;
+  align-items: start;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.15);
+}
+
+.newsboard-date { font-size: 0.85rem; letter-spacing: 0.02em; }
+.newsboard-item-title { font-weight: 700; line-height: 1.35; }
+.newsboard-arrow { align-self: center; }
+
+.newsboard-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.newsboard-accordion-item {
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  will-change: transform;
+}
+
+.newsboard-accordion-item.is-open {
+  border-color: rgba(15, 23, 42, 0.18);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+  transform: translateY(-2px);
+}
+
+.newsboard-accordion-trigger {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+}
+
+.newsboard-accordion-trigger:focus-visible {
+  outline: 2px solid #facc15;
+  outline-offset: 4px;
+}
+
+.newsboard-accordion-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.newsboard-card-date {
+  color: #475569;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.045em;
+}
+
+.newsboard-card-title {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.35;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.newsboard-accordion-icon { transition: transform 0.25s; }
+.newsboard-accordion-icon.rotated { transform: rotate(-180deg); }
+
+.newsboard-accordion-panel {
+  padding: 0 1.25rem 1.25rem;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.35s, opacity 0.25s;
+  contain: layout paint;
+  will-change: max-height, opacity;
+}
+
+.newsboard-accordion-panel.is-open {
+  max-height: 400px;
+  opacity: 1;
+}
+
+.newsboard-accordion-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.5rem 1rem;
+  margin: 0 0 1rem;
+}
+
+.newsboard-accordion-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 0.5rem;
+}
+
+.newsboard-accordion-row dt { font-weight: 700; color: #0f172a; }
+.newsboard-accordion-row dd { margin: 0; color: #475569; }
+
+.newsboard-accordion-description {
+  margin: 0 0 1rem;
+  color: #1f2937;
+  line-height: 1.5;
+}
+
+.newsboard-card-button,
+.newsboard-card-list-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #facc15;
+  color: #0f172a;
+  border: none;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.newsboard-card-button:hover,
+.newsboard-card-list-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(250, 204, 21, 0.25);
+}
+
+.newsboard img { max-width: 100%; height: auto; display: block; }
+
+@media (max-width: 1100px) {
+  .newsboard { grid-template-columns: 17rem 1fr; }
+  .newsboard-right { grid-column: 1 / -1; }
+  .newsboard-right-inner { position: static; margin-top: 1.25rem; }
+}
+
+@media (max-width: 760px) {
+  .newsboard { grid-template-columns: 1fr; gap: 16px; }
+  .newsboard-sidebar,
+  .newsboard-main { border-radius: 14px; padding: 1rem; }
+  .newsboard-accordion-item { border-radius: 12px; }
+  .newsboard-accordion-trigger { padding: 0.9rem 1rem; }
+  .newsboard-accordion-panel { padding: 0 1rem 1rem; }
+}
+
